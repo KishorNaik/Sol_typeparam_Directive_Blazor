@@ -1,0 +1,49 @@
+﻿@page "/"
+@using Sol_Demo.Model
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@{ 
+
+    var userModel = new UserModel()
+    {
+        FullName = "Kishor Naik"
+    };
+
+    var Message = "Hello Blazor";
+
+    var userList = new List<UserModel>();
+    userList.Add(new UserModel() { FullName = "Kishor Naik" });
+    userList.Add(new UserModel() { FullName = "Eshaan Naik" });
+    userList.Add(new UserModel() { FullName = "Deepika Naik" });
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <Sol_Demo.Pages.Demo.Demo1Component  
+                                                TItem1="String" Item1="Message"
+                                                TItem2="UserModel" Item2="userModel"
+                                                >
+
+            </Sol_Demo.Pages.Demo.Demo1Component>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+           <Sol_Demo.Pages.Demo.Demo2Component
+                                               TItem="UserModel"
+                                               ItemData="userList"
+                                               Context="UserModelObject"
+                                               >
+               <ItemTemplate>
+                    <h2>@UserModelObject?.FullName</h2>
+               </ItemTemplate>
+           </Sol_Demo.Pages.Demo.Demo2Component>
+        </div>
+    </div>
+</div>

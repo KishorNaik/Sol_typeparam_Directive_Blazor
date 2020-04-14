@@ -1,0 +1,19 @@
+﻿@typeparam TItem1
+@typeparam TItem2
+
+<h1>Item Data : @Item1 </h1>
+
+<div>
+    <h1>Full Name : @(((dynamic)Item2).FullName) </h1>
+    <h1>Full Name : @(Item2.GetType().GetProperty("FullName").GetValue(Item2,null) as string) </h1>
+</div>
+
+@code {
+
+    [Parameter]
+    public TItem1 Item1 { get; set; }
+
+    [Parameter]
+    public TItem2 Item2 { get; set; }
+
+}

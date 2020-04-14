@@ -1,0 +1,24 @@
+﻿@typeparam TItem
+
+<ul>
+    @foreach(var data in ItemData)
+    {
+        <li>
+            <div class="alert alert-info">
+                @ItemTemplate(data)
+            </div>
+        </li>
+        
+    }
+</ul>
+
+
+@code {
+
+    [Parameter]
+    public RenderFragment<TItem> ItemTemplate { get; set; }
+
+    [Parameter]
+    public IEnumerable<TItem> ItemData { get; set; }
+
+}
